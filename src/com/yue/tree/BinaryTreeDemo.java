@@ -27,9 +27,16 @@ public class BinaryTreeDemo {
 //        System.out.println("后序遍历");
 //        binaryTree.postOrder(binaryTree.getRoot()); //2,5,4,3,1
 
-        System.out.println(binaryTree.preOrderSearch(binaryTree.getRoot(), 4).getName());
-        System.out.println(binaryTree.infixOrderSearch(binaryTree.getRoot(), 4).getName());
-        System.out.println(binaryTree.postOrderSearch(binaryTree.getRoot(), 4).getName());
+//        System.out.println(binaryTree.preOrderSearch(binaryTree.getRoot(), 4).getName());
+//        System.out.println(binaryTree.infixOrderSearch(binaryTree.getRoot(), 4).getName());
+//        System.out.println(binaryTree.postOrderSearch(binaryTree.getRoot(), 4).getName());
+
+        System.out.println("删除前,前序遍历");
+        binaryTree.preOrder(binaryTree.getRoot()); // 1,2,3,5,4
+        binaryTree.delNode(3);
+        System.out.println("删除后，前序遍历");
+        binaryTree.preOrder(binaryTree.getRoot()); // 1,2,3,4
+
     }
 }
 
@@ -102,6 +109,13 @@ class BinaryTree{
         return null;
     }
 
+    public void delNode(int no){
+        if (root == null) throw new RuntimeException("树为空！！！");
+        if (root.getNo() == no) root=null;
+        else root.delNode(no);
+    }
+
+
 }
 
 //树的节点
@@ -149,4 +163,22 @@ class HeroNode{
     public void setRight(HeroNode right) {
         this.right = right;
     }
+
+    //删除结点
+    public void delNode(int no){
+        if (this.left!=null){
+            if (this.left.getNo()==no){
+                this.left=null;
+            }else
+                this.left.delNode(no);
+        }
+        if (this.right!=null){
+            if (this.right.getNo()==no){
+                this.right=null;
+            }else
+                this.right.delNode(no);
+        }
+
+    }
+
 }
