@@ -1,6 +1,4 @@
-package com.yue.dynamic;
-
-import java.util.Arrays;
+package com.yue.algorithm.dynamic;
 
 //动态规划解决背包问题
 public class KnapsackProblem {
